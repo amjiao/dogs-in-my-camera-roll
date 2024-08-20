@@ -57,7 +57,7 @@ fun DogGenerator(navController: NavController, dogViewModel: DogViewModel = view
             modifier = Modifier.padding(innerPadding)
         ){
             val dogImageUrl by dogViewModel.dogImageUrl.observeAsState()
-            Button(onClick = {
+            OutlinedButton(onClick = {
                 navController.navigate(Screen.MainScreen.route)
             }) {
                 Text("<")

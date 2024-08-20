@@ -80,7 +80,7 @@ fun MainScreen(navController: NavController) {
                 Text(
                     modifier = Modifier.padding(10.dp),
                     fontSize = 45.sp,
-                    text = "camera roll :)"
+                    text = "camera roll"
                 )
             }
 
@@ -89,9 +89,18 @@ fun MainScreen(navController: NavController) {
                 items(1){
                     CollectionCard(
                         1,
+                        R.drawable.odie,
+                        "odie",
+                        "cartoons",
+                        gson.toJson(PostRepo.cartoons),
+                        PostRepo.cartoons.size,
+                        navController
+                    )
+                    CollectionCard(
+                        2,
                         R.drawable.ic_launcher_background,
                         "temp",
-                        "collection5",
+                        "filler",
                         gson.toJson(PostRepo.collection2),
                         PostRepo.collection2.size,
                         navController
@@ -100,16 +109,7 @@ fun MainScreen(navController: NavController) {
                         3,
                         R.drawable.ic_launcher_background,
                         "temp",
-                        "collection5",
-                        gson.toJson(PostRepo.collection2),
-                        PostRepo.collection2.size,
-                        navController
-                    )
-                    CollectionCard(
-                        2,
-                        R.drawable.ic_launcher_background,
-                        "temp",
-                        "collection5",
+                        "filler",
                         gson.toJson(PostRepo.collection2),
                         PostRepo.collection2.size,
                         navController

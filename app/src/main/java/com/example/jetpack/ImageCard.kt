@@ -27,6 +27,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.google.gson.Gson
 
 @Composable
 fun ImageCard(
@@ -34,14 +35,16 @@ fun ImageCard(
     imgId: Int,
     name: String,
     breed: String,
-    story: String,
-    notes: String,
+    collection: List<Post>,
     contentDescription: String,
     navController : NavController
 ){
+    val gson = Gson()
+    val collectionStr = gson.toJson(collection)
     Card(
         modifier = Modifier.fillMaxWidth().padding(10.dp).clickable{
-            navController.navigate(Screen.DetailScreen.route + "/$number")},
+            navController.navigate("${Screen.DetailScreen.route}/$number/$collectionStr")}
+            ,
         shape = RoundedCornerShape(15.dp)
     ){
         Box(modifier = Modifier.height(250.dp).background(color = Color.White),

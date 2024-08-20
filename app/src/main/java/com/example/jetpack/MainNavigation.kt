@@ -38,27 +38,23 @@ fun Navigation() {
         composable(Screen.HomeScreen.route){
             HomeScreen(navController)
         }
-        composable(
-            route = Screen.DetailScreen.route + "/{postId}",
-            arguments = listOf(
-                navArgument("postId"){
-                    type = NavType.IntType
-                    nullable = false
-                }
-            )){ entry ->
-                DetailScreen(postId = entry.arguments?.getInt("postId") ?: error("postId is null"), navController)
-        }
-        composable(
-            route = Screen.CommentScreen.route + "/{postId}",
-            arguments = listOf(
-                navArgument("postId"){
-                    type = NavType.IntType
-                    nullable = false
-                }
-            )
-        ){ entry ->
-            Comments(postId = entry.arguments?.getInt("postId") ?: error("postId is null"), navController)
-        }
+//        composable(
+//            route = Screen.CommentScreen.route + "/{postId}" + "/{list}",
+//            arguments = listOf(
+//                navArgument("postId"){
+//                    type = NavType.IntType
+//                    nullable = false
+//                },
+//                navArgument("list"){
+//                    type = NavType.StringType
+//                    nullable = false
+//                }
+//            )
+//        ){ entry ->
+//            Comments(postId = entry.arguments?.getInt("postId") ?: error("postId is null"),
+//                list = entry.arguments?.getString("list") ?: error("list is null"),
+//                navController)
+//        }
         composable(Screen.DogGeneratorScreen.route){
             DogGenerator(navController)
         }
@@ -80,6 +76,52 @@ fun Navigation() {
                 val items: List<Post> = gson.fromJson(it, object : TypeToken<List<Post>>() {}.type)
                 CollectionScreen(items, navController,
                     title = backStackEntry.arguments?.getString("title") ?: error("title is null")
+                )
+            }
+        }
+
+        composable(Screen.DetailScreen.route + "/{postId}" + "/{list}",
+            arguments = listOf(
+                navArgument("postId"){
+                    type = NavType.IntType
+                    nullable = false
+                },
+                navArgument("list"){
+                    type = NavType.StringType
+                    nullable = false
+                }
+            )
+        ) { backStackEntry ->
+            val itemsJson = backStackEntry.arguments?.getString("list")
+            itemsJson?.let {
+                val items: List<Post> = gson.fromJson(it, object : TypeToken<List<Post>>() {}.type)
+                DetailScreen(
+                    postId = backStackEntry.arguments?.getInt("postId") ?: error("postId is null"),
+                    items,
+                    navController
+                )
+            }
+        }
+
+        composable(Screen.CommentScreen.route + "/{postId}" + "/{list}",
+            arguments = listOf(
+                navArgument("postId"){
+                    type = NavType.IntType
+                    nullable = false
+                },
+                navArgument("list"){
+                    type = NavType.StringType
+                    nullable = false
+                }
+            )
+        ) { backStackEntry ->
+            val itemsJson = backStackEntry.arguments?.getString("list")
+            itemsJson?.let {
+                val items: List<Post> = gson.fromJson(it, object : TypeToken<List<Post>>() {}.type)
+                Comments(
+                    postId = backStackEntry.arguments?.getInt("postId") ?: error("postId is null"),
+                    items,
+                    navController
                 )
             }
         }

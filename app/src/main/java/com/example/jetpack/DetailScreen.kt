@@ -36,8 +36,8 @@ import androidx.navigation.NavController
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun DetailScreen(postId: Int, navController: NavController){
-    val post = PostRepo.postList[postId-1]
+fun DetailScreen(postId: Int, list: List<Post>, navController: NavController){
+    val post = list[postId-1]
 
     var showBottomSheet by remember { mutableStateOf(false)}
     val sheetState = rememberModalBottomSheetState(
@@ -99,17 +99,17 @@ fun DetailScreen(postId: Int, navController: NavController){
                 Column(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalAlignment = Alignment.CenterHorizontally
-                ){
+                ) {
                     OutlinedButton(
                         onClick = {
                             showBottomSheet = true
                         },
                         shape = RoundedCornerShape(2.dp)
-                    ){
+                    ) {
                         Text("comments")
                     }
 
-                    if(showBottomSheet){
+                    if (showBottomSheet) {
                         ModalBottomSheet(
                             modifier = Modifier.fillMaxHeight(0.5f),
                             sheetState = sheetState,
@@ -117,37 +117,16 @@ fun DetailScreen(postId: Int, navController: NavController){
                                 showBottomSheet = false
                             }
                         ) {
-                            Comments(postId, navController)
+                            Comments(postId, list, navController)
                         }
                     }
                 }
-                /*LazyColumn{
-                    if(post.comments.size < 3){
-                        items(post.comments.size){
-                            Text(
-                                text = post.comments[it],
-                                modifier = Modifier
-                                    .padding(start = 15.dp, top = 7.dp, end = 7.dp, bottom = 7.dp)
-                                    .fillMaxWidth()
-                            )
-                        }
-                    }else {
-                        items(3) {
-                            Text(
-                                text = post.comments[it],
-                                modifier = Modifier
-                                    .padding(start = 15.dp, top = 7.dp, end = 7.dp, bottom = 7.dp)
-                                    .fillMaxWidth()
-                            )
-                        }
-                    }
-                }*/
             }
         }
-        Button(onClick = {
+        OutlinedButton(onClick = {
             navController.navigate(Screen.MainScreen.route)
         }){
-            Text("< back")
+            Text("<")
         }
     }
 }

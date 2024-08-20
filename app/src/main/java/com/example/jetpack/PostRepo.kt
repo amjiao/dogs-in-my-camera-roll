@@ -12,14 +12,13 @@ object PostRepo{
             mutableListOf(
                 "so cute!",
                 "awww",
-                "love love love!",
-                "omg"
+                "love!"
             )
         ),
         Post(2, R.drawable.bo_luke,
             "Bo and Luke",
             "husky mix",
-            "natalie's second chance resident troublemakers",
+            "resident troublemakers",
             "adopted :')",
             "two brown husky puppies in the parking lot",
             mutableListOf("cute")
@@ -34,14 +33,14 @@ object PostRepo{
         Post(4, R.drawable.trixie,
             "Trixie",
             "german shepard mix",
-            "natalie's philosopher",
-            "takes contemplative breaks on walks",
+            "a philosopher",
+            "contemplative sit-downs on walks",
             "german shepard puppy sitting politely on sidewalk"
         ),
         Post(5, R.drawable.winston,
             "Winston",
             "yorkie",
-            "natalie's old man",
+            "old man",
             "all bark no bite!!",
             "little white dog jumping at camera"
         )
@@ -50,7 +49,7 @@ object PostRepo{
     val collection2 = listOf(
         Post(1, R.drawable.allie,
             "allie","border collie",
-            "my ceramics teacher's child",
+            "ceramics teacher's child",
             "really good at begging for goldfish",
             "black border collie doing puppy eyes",
             mutableListOf(
@@ -68,8 +67,8 @@ object PostRepo{
         Post(3, R.drawable.awang,
             "awang",
             "unknown",
-            "my uncles dog in china",
-            "12 year old me got in trouble for sharing too much of my food with her",
+            "uncle's dog",
+            "loved sharing my food with her as a kid",
             "white dog squinting in sun"
         ),
         Post(4, R.drawable.reindeer,
@@ -78,6 +77,29 @@ object PostRepo{
             "saw on a street in japan",
             "",
             "golden retriever with reindeer antlers laying in the street"
+        )
+    )
+
+    val cartoons = listOf(
+        Post(1, R.drawable.odie,
+            "odie","beagle",
+            "garfields brother",
+            "happy",
+            "happy odie"
+        ),
+        Post(2, R.drawable.scooby,
+            "scooby doo",
+            "great dane",
+            "shaggy's best friend",
+            "loves scooby snacks",
+            "proud scooby doo"
+        ),
+        Post(3, R.drawable.snoopy,
+            "snoopy",
+            "beagle",
+            "charlie brown's dog",
+            "smart",
+            "happy snoopy side-eye"
         )
     )
 }

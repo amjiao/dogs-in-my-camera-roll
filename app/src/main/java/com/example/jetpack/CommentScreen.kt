@@ -26,9 +26,9 @@ import androidx.navigation.NavController
 
 
 @Composable
-fun Comments(postId: Int, navController: NavController){
+fun Comments(postId: Int, list: List<Post>, navController: NavController){
 
-    val post = PostRepo.postList[postId-1]
+    val post = list[postId-1]
     var textFieldState by remember{
         mutableStateOf("")
     }

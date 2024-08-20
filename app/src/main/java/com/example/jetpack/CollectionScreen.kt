@@ -80,8 +80,7 @@ fun CollectionScreen(collection: List<Post>, navController: NavController, title
                             collection[it].imgId,
                             collection[it].name,
                             collection[it].breed,
-                            collection[it].story,
-                            collection[it].notes,
+                            collection,
                             collection[it].contentDescription,
                             navController
                         )
